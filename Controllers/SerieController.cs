@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BootFlixBC9.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BootFlixBC9.Controllers
 {
@@ -18,6 +19,8 @@ namespace BootFlixBC9.Controllers
             };
             return View(serie);
         }
+
+        [Route("serie/released/{year}/{month}")]
         public ActionResult ByReleaseDate(int year, int month)
         {
             return Content(year +"/" + month);

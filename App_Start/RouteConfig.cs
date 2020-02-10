@@ -12,11 +12,11 @@ namespace BootFlixBC9
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "SeriesByReleaseDate",
-                "serie/released/{year}/{month}",
-                new { controller = "Serie", action = "ByReleaseDate" });
+            routes.MapMvcAttributeRoutes();
+            //routes.MapRoute(
+            //    "SeriesByReleaseDate",
+            //    "serie/released/{year}/{month}",
+            //    new { controller = "Serie", action = "ByReleaseDate" });
 
             routes.MapRoute(
                 name: "Default",
