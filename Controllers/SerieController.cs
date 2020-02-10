@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BootFlixBC9.Models;
 using System.ComponentModel.DataAnnotations;
+using BootFlixBC9.ViewModels;
 
 namespace BootFlixBC9.Controllers
 {
@@ -17,6 +18,18 @@ namespace BootFlixBC9.Controllers
             {
                 Name = "The Wire"
             };
+            var viewers = new List<Viewer>
+            {
+                new Viewer { Name = "Peri Aidino"},
+                new Viewer { Name = "Chris Antonopoulos"}
+            };
+
+            var viewModel = new PerfectSerieViewModel
+            {
+                Serie = serie,
+                Viewers = viewers
+            };
+
             return View(serie);
         }
 
