@@ -4,29 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BootFlixBC9.Models;
+using BootFlixBC9.MockRepositories;
 
 namespace BootFlixBC9.Controllers
 {
     public class ViewerController : Controller
     {
-        private IEnumerable<Viewer> GetViewers()
-        {
-            return new List<Viewer>
-            {
-                new Viewer { Id = 1 , Name = "Costas Spyrou"},
-                new Viewer { Id = 2 , Name = "Pavlina Kostalea"}
-            };
-        }
+        private readonly MockViewerRepository _mockViewerRepository = new MockViewerRepository();
         // GET: Viewer
         public ActionResult Index()
         {
-            var viewers = GetViewers();
+            var viewers = _mockViewerRepository.GetViewers();
             return View(viewers);
         }
         
         public ActionResult Details(int id)
         {
-            var viewer = GetViewers().SingleOrDefault(v => v.Id == id);
+            var viewer = _mockViewerRepository.GetViewers().SingleOrDefault(v => v.Id == id);
             if (viewer == null)
                 return HttpNotFound();
 
