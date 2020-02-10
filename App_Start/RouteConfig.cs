@@ -14,6 +14,11 @@ namespace BootFlixBC9
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "SeriesByReleaseDate",
+                "serie/released/{year}/{month}",
+                new { controller = "Serie", action = "ByReleaseDate" });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
