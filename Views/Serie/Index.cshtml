@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BootFlixBC9.Models.Serie>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Series</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Serie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var serie in Model)
+        {
+            <tr>
+                <td>@serie.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
