@@ -6,23 +6,17 @@ using System.Web.Mvc;
 using BootFlixBC9.Models;
 using System.ComponentModel.DataAnnotations;
 using BootFlixBC9.ViewModels;
+using BootFlixBC9.MockRepositories;
 
 namespace BootFlixBC9.Controllers
 {
     public class SerieController : Controller
     {
+        private readonly MockSerieRepository _mockSerieRepository = new MockSerieRepository();
         
-        private IEnumerable<Serie> GetSeries()
-        {
-            return new List<Serie>
-            {
-                new Serie { Id = 1, Name = "Lost"},
-                new Serie { Id = 2, Name = "Game of Thrones"}
-            };
-        }
         public ActionResult Index()
         {
-            var series = GetSeries();
+            var series = _mockSerieRepository.GetSeries();
             return View(series);
         }
         // GET: Serie/Perfect
