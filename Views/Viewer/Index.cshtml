@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BootFlixBC9.Models.Viewer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Viewers</h2>
+@if (!Model.Any())
+{
+    <text>We Dont Have Any Viewers Yet.</text>
+}
+else
+{
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Viewer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var viewer in Model)
+        {
+            <tr>
+                <td>@viewer.Name</td>
+                <td>@Html.ActionLink(viewer.Name, "Details", "Viewer", new { id = viewer.Id }, null)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
