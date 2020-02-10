@@ -1,8 +1,22 @@
 ﻿
-@model BootFlixBC9.Models.Serie
+@model BootFlixBC9.ViewModels.PerfectSerieViewModel
 @{
     ViewBag.Title = "Perfect";
 }
 
-<h2>@Model.Name</h2>
+<h2>Perfect Serie</h2>
+<h3>@Model.Serie.Name</h3>
+@if (Model.Viewers.Count == 0)
+{
+    <text>No one has viewed this series</text>
+}
+else
+{
+    <ul>
+        @foreach (var viewer in Model.Viewers)
+        {
+            <li>@viewer.Name</li>
+        }
+    </ul>
+}
 

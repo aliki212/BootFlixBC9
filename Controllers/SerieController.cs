@@ -30,7 +30,7 @@ namespace BootFlixBC9.Controllers
                 Viewers = viewers
             };
 
-            return View(serie);
+            return View(viewModel);
         }
 
         [Route("serie/released/{year}/{month}")]
