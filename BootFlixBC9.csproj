@@ -183,6 +183,14 @@
     <Compile Include="Migrations\202002111650176_AddedIsSubscribedToNewsViews.Designer.cs">
       <DependentUpon>202002111650176_AddedIsSubscribedToNewsViews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002111716591_AddMembershipType.cs" />
+    <Compile Include="Migrations\202002111716591_AddMembershipType.Designer.cs">
+      <DependentUpon>202002111716591_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002111727498_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\202002111727498_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>202002111727498_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -281,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002111650176_AddedIsSubscribedToNewsViews.resx">
       <DependentUpon>202002111650176_AddedIsSubscribedToNewsViews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111716591_AddMembershipType.resx">
+      <DependentUpon>202002111716591_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111727498_PopulateMembershipTypes.resx">
+      <DependentUpon>202002111727498_PopulateMembershipTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
