@@ -13,5 +13,9 @@ namespace BootFlixBC9.Models
 
         public bool IsSubscribedToNews { get; set; }
 
+        public byte MembershipTypeId { get; set; }
+
+        public MembershipType MembershipType { get; set; } //AND navigation property -> virtual only for lazy loading
+
     }
 }
