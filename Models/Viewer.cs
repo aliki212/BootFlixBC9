@@ -11,5 +11,7 @@ namespace BootFlixBC9.Models
 
         public string Name { get; set; }
 
+        public bool IsSubscribedToNews { get; set; }
+
     }
 }

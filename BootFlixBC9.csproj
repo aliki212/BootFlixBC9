@@ -179,6 +179,10 @@
     <Compile Include="Migrations\202002111635491_Initial.Designer.cs">
       <DependentUpon>202002111635491_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002111650176_AddedIsSubscribedToNewsViews.cs" />
+    <Compile Include="Migrations\202002111650176_AddedIsSubscribedToNewsViews.Designer.cs">
+      <DependentUpon>202002111650176_AddedIsSubscribedToNewsViews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -273,6 +277,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002111635491_Initial.resx">
       <DependentUpon>202002111635491_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002111650176_AddedIsSubscribedToNewsViews.resx">
+      <DependentUpon>202002111650176_AddedIsSubscribedToNewsViews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
