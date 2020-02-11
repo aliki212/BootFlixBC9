@@ -28,7 +28,7 @@ namespace BootFlixBC9.Controllers
         // GET: Viewer
         public ActionResult Index()
         {
-            var viewers = context.Viewers;
+            var viewers = context.Viewers.ToList();
             return View(viewers);
         }
         
