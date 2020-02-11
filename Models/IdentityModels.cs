@@ -20,13 +20,16 @@ namespace BootFlixBC9.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Viewer>Viewers { get; set; }
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("BootFlixBC9DBContext", throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
+
             return new ApplicationDbContext();
         }
     }
