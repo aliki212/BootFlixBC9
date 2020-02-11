@@ -10,17 +10,31 @@ namespace BootFlixBC9.Controllers
 {
     public class ViewerController : Controller
     {
-        private readonly MockViewerRepository _mockViewerRepository = new MockViewerRepository();
+        //private readonly MockViewerRepository _mockViewerRepository = new MockViewerRepository();
+       //Just another way to break down and continue the createion of context object
+       //part1
+        private ApplicationDbContext context;
+        //part2
+        public ViewerController()
+        {
+            context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            context.Dispose();
+        }
+
         // GET: Viewer
         public ActionResult Index()
         {
-            var viewers = _mockViewerRepository.GetViewers();
+            var viewers = context.Viewers;
             return View(viewers);
         }
         
         public ActionResult Details(int id)
         {
-            var viewer = _mockViewerRepository.GetViewers().SingleOrDefault(v => v.Id == id);
+            var viewer = context.Viewers.SingleOrDefault(v => v.Id == id);
             if (viewer == null)
                 return HttpNotFound();
 
