@@ -203,6 +203,10 @@
     <Compile Include="Migrations\202002121631290_SetNameMembershipType.Designer.cs">
       <DependentUpon>202002121631290_SetNameMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002121646316_AddBirthdateToViewer.cs" />
+    <Compile Include="Migrations\202002121646316_AddBirthdateToViewer.Designer.cs">
+      <DependentUpon>202002121646316_AddBirthdateToViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -316,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121631290_SetNameMembershipType.resx">
       <DependentUpon>202002121631290_SetNameMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121646316_AddBirthdateToViewer.resx">
+      <DependentUpon>202002121646316_AddBirthdateToViewer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

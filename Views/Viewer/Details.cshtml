@@ -5,4 +5,16 @@
 
 <h2>@Model.Name</h2>
 
+<ul>
+    <li>Subscription Type: @Model.MembershipType.Name</li>
+    @if (Model.Birtdate.HasValue)
+    {
+        <li>Birthdate: @Model.Birtdate.Value.ToLongDateString() </li>
+    }
+    else
+    {
+        <li>Birthdate : Unknown</li>
+    }
+</ul>
+
 

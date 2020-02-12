@@ -14,6 +14,10 @@ namespace BootFlixBC9.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Display(Name = "Date of Birth")]
+
+        public DateTime? Birtdate { get; set; }
+
         public bool IsSubscribedToNews { get; set; }
 
         public byte MembershipTypeId { get; set; }
