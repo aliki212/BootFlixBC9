@@ -15,7 +15,9 @@
         @foreach(var serie in Model)
         {
             <tr>
-                <td>@serie.Name</td>
+                @*<td>@serie.Name</td>*@
+                <td>@Html.ActionLink(serie.Name, "Details", "Serie", new { id = serie.Id }, null</td>
+                <td>@serie.Genre.Name</td>
             </tr>
         }
     </tbody>

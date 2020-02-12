@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202002121716265_AddedSeriesGenreClass.Designer.cs">
       <DependentUpon>202002121716265_AddedSeriesGenreClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002121726397_PopulateGenres.cs" />
+    <Compile Include="Migrations\202002121726397_PopulateGenres.Designer.cs">
+      <DependentUpon>202002121726397_PopulateGenres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121716265_AddedSeriesGenreClass.resx">
       <DependentUpon>202002121716265_AddedSeriesGenreClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121726397_PopulateGenres.resx">
+      <DependentUpon>202002121726397_PopulateGenres.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
