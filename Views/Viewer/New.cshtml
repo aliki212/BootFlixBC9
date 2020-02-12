@@ -1,0 +1,30 @@
+﻿@model BootFlixBC9.Models.Viewer
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Viewer</h2>
+
+@using (Html.BeginForm("Create", "Viewer"))
+{
+    <div class="form-group">
+        @Html.LabelFor(v => v.Name)
+        @Html.TextBoxFor(v => v.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.Birtdate)
+        @Html.TextBoxFor(v => v.Birtdate, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(v => v.IsSubscribedToNews)
+        @Html.CheckBoxFor(v => v.IsSubscribedToNews, new { @class = "form-check-input" })
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(v => v.IsSubscribedToNews, new { @class = "form-check-input" }) Subscribe to news
+        </label>
+    </div>
+
+}
+

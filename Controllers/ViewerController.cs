@@ -45,5 +45,10 @@ namespace BootFlixBC9.Controllers
 
             return View(viewer);
         }
+        //GET NEW - getting the data to present to input the data and then post them
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
