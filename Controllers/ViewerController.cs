@@ -37,7 +37,9 @@ namespace BootFlixBC9.Controllers
         
         public ActionResult Details(int id)
         {
-            var viewer = context.Viewers.SingleOrDefault(v => v.Id == id);
+            var viewer = context.Viewers
+                .Include(c=> c.MembershipType) //added for bringing the new name of Membership - eskage as null b4
+                .SingleOrDefault(v => v.Id == id);
             if (viewer == null)
                 return HttpNotFound();
 
