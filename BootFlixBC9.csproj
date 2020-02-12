@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202002111822050_RequiredNameViewer.Designer.cs">
       <DependentUpon>202002111822050_RequiredNameViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002121623030_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\202002121623030_AddNameToMembershipType.Designer.cs">
+      <DependentUpon>202002121623030_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -302,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002111822050_RequiredNameViewer.resx">
       <DependentUpon>202002111822050_RequiredNameViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121623030_AddNameToMembershipType.resx">
+      <DependentUpon>202002121623030_AddNameToMembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

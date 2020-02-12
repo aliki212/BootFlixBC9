@@ -14,15 +14,21 @@ else
     <thead>
         <tr>
             <th>Viewer</th>
+            <th>Viewer Name</th>
+            <th>Discount Rate</th>
+            <th>Membership Type</th>
         </tr>
+        
     </thead>
     <tbody>
         @foreach (var viewer in Model)
         {
-            <tr>
-                <td>@viewer.Name</td>
-                <td>@Html.ActionLink(viewer.Name, "Details", "Viewer", new { id = viewer.Id }, null)</td>
-            </tr>
+        <tr>
+            <td>@viewer.Name</td>
+            <td>@Html.ActionLink(viewer.Name, "Details", "Viewer", new { id = viewer.Id }, null)</td>
+            <td>@viewer.MembershipType.DiscountRate%</td>
+            <td>@viewer.MembershipType.Id</td>
+        </tr>
         }
     </tbody>
 </table>

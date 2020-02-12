@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BootFlixBC9.Models;
 using BootFlixBC9.MockRepositories;
+using System.Data.Entity;
 
 namespace BootFlixBC9.Controllers
 {
@@ -28,7 +29,9 @@ namespace BootFlixBC9.Controllers
         // GET: Viewer
         public ActionResult Index()
         {
-            var viewers = context.Viewers.ToList();
+            var viewers = context.Viewers
+                .Include(v => v.MembershipType)
+                .ToList();
             return View(viewers);
         }
         
