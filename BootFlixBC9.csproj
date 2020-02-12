@@ -227,6 +227,7 @@
     <Compile Include="Models\Viewer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\NewViewerViewModel.cs" />
     <Compile Include="ViewModels\PerfectSerieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

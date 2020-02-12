@@ -20,6 +20,7 @@ namespace BootFlixBC9.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<MembershipType>MembershipTypes { get; set; }
         public DbSet<Serie>Series { get; set; }
         public DbSet<Viewer>Viewers { get; set; }
 

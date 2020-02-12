@@ -22,6 +22,8 @@ namespace BootFlixBC9.Models
 
         public byte MembershipTypeId { get; set; }
 
+        [Display(Name="Membership Type")]
+
         public MembershipType MembershipType { get; set; } //AND navigation property -> virtual only for lazy loading
 
     }

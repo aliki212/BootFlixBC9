@@ -1,4 +1,4 @@
-﻿@model BootFlixBC9.Models.Viewer
+﻿@model BootFlixBC9.ViewModels.NewViewerViewModel
 @{
     ViewBag.Title = "New";
 }
@@ -8,21 +8,27 @@
 @using (Html.BeginForm("Create", "Viewer"))
 {
     <div class="form-group">
-        @Html.LabelFor(v => v.Name)
-        @Html.TextBoxFor(v => v.Name, new { @class = "form-control" })
+        @Html.LabelFor(v => v.Viewer.Name)
+        @Html.TextBoxFor(v => v.Viewer.Name, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(v => v.Birtdate)
-        @Html.TextBoxFor(v => v.Birtdate, new { @class = "form-control" })
+        @Html.LabelFor(v => v.Viewer.Birtdate)
+        @Html.TextBoxFor(v => v.Viewer.Birtdate, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(v => v.IsSubscribedToNews)
-        @Html.CheckBoxFor(v => v.IsSubscribedToNews, new { @class = "form-check-input" })
+        @Html.LabelFor(v => v.Viewer.IsSubscribedToNews)
+        @Html.CheckBoxFor(v => v.Viewer.IsSubscribedToNews, new { @class = "form-check-input" })
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(v => v.Viewer.MembershipTypeId)
+        @Html.DropDownListFor(v => v.Viewer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "--Select--", new { @class = "form-check-input" })
+
+
+    </div>
     <div class="checkbox">
         <label>
-            @Html.CheckBoxFor(v => v.IsSubscribedToNews, new { @class = "form-check-input" }) Subscribe to news
+            @Html.CheckBoxFor(v => v.Viewer.IsSubscribedToNews, new { @class = "form-check-input" }) Subscribe to news
         </label>
     </div>
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BootFlixBC9.Models;
 using BootFlixBC9.MockRepositories;
 using System.Data.Entity;
+using BootFlixBC9.ViewModels;
 
 namespace BootFlixBC9.Controllers
 {
@@ -48,7 +49,13 @@ namespace BootFlixBC9.Controllers
         //GET NEW - getting the data to present to input the data and then post them
         public ActionResult New()
         {
-            return View();
+            var membershiptypes = context.MembershipTypes.ToList();
+            var viewmodel = new NewViewerViewModel()
+            {
+                MembershipTypes = membershiptypes
+            };
+           
+            return View(viewmodel);
         }
     }
 }
