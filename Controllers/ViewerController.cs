@@ -57,5 +57,12 @@ namespace BootFlixBC9.Controllers
            
             return View(viewmodel);
         }
-    }
+
+        //POST
+        [HttpPost]
+        public ActionResult Create(NewViewerViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Viewer");
+        }
+    }//
 }
