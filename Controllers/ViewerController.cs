@@ -60,9 +60,13 @@ namespace BootFlixBC9.Controllers
 
         //POST
         [HttpPost]
-        public ActionResult Create(Viewer viewer)
+        public ActionResult Save(Viewer viewer)
         {
+
+            if(viewer.Id == 0) //meanst the viewer coming back is without id = then go create one!
             context.Viewers.Add(viewer);
+            
+
             context.SaveChanges();
             return RedirectToAction("Index", "Viewer");
         }
