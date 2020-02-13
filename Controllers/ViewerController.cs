@@ -71,7 +71,7 @@ namespace BootFlixBC9.Controllers
                     MembershipTypes = membershiptypes
                 };
 
-                return View("ViewerForm", viewModel)
+                return View("ViewerForm", viewModel);
             }
             if(viewer.Id == 0) //meanst the viewer coming back is without id = then go create one!
             context.Viewers.Add(viewer);
