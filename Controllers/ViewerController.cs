@@ -60,8 +60,10 @@ namespace BootFlixBC9.Controllers
 
         //POST
         [HttpPost]
-        public ActionResult Create(NewViewerViewModel viewModel)
+        public ActionResult Create(Viewer viewer)
         {
+            context.Viewers.Add(viewer);
+            context.SaveChanges();
             return RedirectToAction("Index", "Viewer");
         }
     }//
