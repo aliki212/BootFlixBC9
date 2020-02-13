@@ -66,5 +66,23 @@ namespace BootFlixBC9.Controllers
             context.SaveChanges();
             return RedirectToAction("Index", "Viewer");
         }
+
+        //GET EDIT - substituting Details link in Viewer Index View
+        public ActionResult Edit(int id)
+        {
+            var viewer = context.Viewers.SingleOrDefault(v => v.Id == id);
+
+            if (viewer == null)
+                return HttpNotFound();
+
+            var viewModel = new NewViewerViewModel
+            {
+                Viewer = viewer,
+                MembershipTypes = context.MembershipTypes.ToList()
+            };
+        
+
+            return View("New", viewModel);
+        }
     }//
 }
