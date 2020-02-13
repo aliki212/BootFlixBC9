@@ -94,7 +94,7 @@ namespace BootFlixBC9.Controllers
             }
 
             context.SaveChanges();
-            return RedirectToAction("Index", "Viewer");
+            return RedirectToAction("Index", "Serie");
         }
 
         // GET: Serie/Perfect
