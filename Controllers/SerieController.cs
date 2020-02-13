@@ -9,6 +9,7 @@ using BootFlixBC9.ViewModels;
 using BootFlixBC9.MockRepositories;
 using System.Data.Entity;
 
+
 namespace BootFlixBC9.Controllers
 {
     public class SerieController : Controller
@@ -51,7 +52,7 @@ namespace BootFlixBC9.Controllers
             var serie = context.Series.SingleOrDefault(s => s.Id == Id);
             if (serie == null)
                 return HttpNotFound();
-            var viewModel = new SerieFormVIewModel
+            var viewModel = new SerieFormViewModel
             {
                 Serie = serie,
                 Genres = context.Genres.ToList()
