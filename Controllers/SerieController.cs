@@ -73,7 +73,29 @@ namespace BootFlixBC9.Controllers
             return View("SerieForm", viewmodel);
         }
 
+        [HttpPost]
+        public ActionResult Save(Serie serie)
+        {
 
+            if (serie.Id == 0) //meanst the viewer coming back is without id = then go create one!
+            {
+                //Very cool and simple way to register the new creation
+                serie.DateAdded = DateTime.Now;
+                context.Series.Add(serie);
+            }
+            else
+            {
+                var serieDb = context.Series.Single(v => v.Id == serie.Id);
+                
+                serieDb.Name = serie.Name;
+                serieDb.GenreId = serie.GenreId;
+                serieDb.Seasons = serie.Seasons;
+                serieDb.DateReleased = serie.DateReleased;
+            }
+
+            context.SaveChanges();
+            return RedirectToAction("Index", "Viewer");
+        }
 
         // GET: Serie/Perfect
         public ActionResult Perfect()
