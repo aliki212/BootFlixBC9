@@ -65,7 +65,17 @@ namespace BootFlixBC9.Controllers
 
             if(viewer.Id == 0) //meanst the viewer coming back is without id = then go create one!
             context.Viewers.Add(viewer);
-            
+            else
+            {
+                var viewerDb = context.Viewers.Single(v => v.Id == viewer.Id);
+                //TryUpdateModel string [] whitelist
+                //instead of using whitelist to update a model - we are going to update every
+                //single property since with whitelist is a magic string with no control
+                viewerDb.Name = viewer.Name;
+                viewerDb.Birtdate = viewer.Birtdate;
+                viewerDb.MembershipTypeId = viewer.MembershipTypeId;
+                viewerDb.IsSubscribedToNews = viewer.IsSubscribedToNews;
+            }
 
             context.SaveChanges();
             return RedirectToAction("Index", "Viewer");

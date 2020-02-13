@@ -28,6 +28,7 @@
             @Html.CheckBoxFor(v => v.Viewer.IsSubscribedToNews, new { @class = "form-check-input" }) Subscribe to news
         </label>
     </div>
+    @Html.HiddenFor(v => v.Viewer.Id)
     <button type="submit">Save</button>
 
 }
