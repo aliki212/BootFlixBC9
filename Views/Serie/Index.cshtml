@@ -16,7 +16,7 @@
         {
             <tr>
                 @*<td>@serie.Name</td>*@
-                <td>@Html.ActionLink(serie.Name, "Details", "Serie", new { id = serie.Id }, null)</td>
+                <td>@Html.ActionLink(serie.Name, "Edit", "Serie", new { id = serie.Id }, null)</td>
                 <td>@serie.Genre.Name</td>
             </tr>
         }

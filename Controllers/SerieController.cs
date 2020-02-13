@@ -46,6 +46,19 @@ namespace BootFlixBC9.Controllers
             return View(serie);
         }
 
+        public ActionResult Edit(int Id)
+        {
+            var serie = context.Series.SingleOrDefault(s => s.Id == Id);
+            if (serie == null)
+                return HttpNotFound();
+            var viewModel = new SerieFormVIewModel
+            {
+                Serie = serie,
+                Genres = context.Genres.ToList()
+            };
+
+            return View("SerieForm",viewModel);
+        }
 
         // GET: Serie/Perfect
         public ActionResult Perfect()
