@@ -10,7 +10,7 @@ namespace BootFlixBC9.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Please enter a name")]
         [StringLength(255)]
         public string Name { get; set; }
 
