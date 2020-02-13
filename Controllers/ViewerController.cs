@@ -62,7 +62,17 @@ namespace BootFlixBC9.Controllers
         [HttpPost]
         public ActionResult Save(Viewer viewer)
         {
+            // worst case scenario
+            if (!ModelState.IsValid)
+            {
+                var membershiptypes = context.MembershipTypes.ToList();
+                var viewModel = new ViewerFormViewModel()
+                {
+                    MembershipTypes = membershiptypes
+                };
 
+                return View("ViewerForm", viewModel)
+            }
             if(viewer.Id == 0) //meanst the viewer coming back is without id = then go create one!
             context.Viewers.Add(viewer);
             else
