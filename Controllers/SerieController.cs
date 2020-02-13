@@ -61,6 +61,20 @@ namespace BootFlixBC9.Controllers
             return View("SerieForm",viewModel);
         }
 
+        //GET NEW - getting the data to present to input the data and then post them //copy from ViewerController
+        public ActionResult New() // WAS NEW
+        {
+            var genres = context.Genres.ToList();
+            var viewmodel = new SerieFormViewModel()
+            {
+                Genres = genres
+            };
+
+            return View("SerieForm", viewmodel);
+        }
+
+
+
         // GET: Serie/Perfect
         public ActionResult Perfect()
         {
