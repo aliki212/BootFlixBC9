@@ -6,7 +6,7 @@ using BootFlixBC9.Models;
 
 namespace BootFlixBC9.ViewModels
 {
-    public class NewViewerViewModel
+    public class ViewerFormViewModel
     {
         public IEnumerable<MembershipType> MembershipTypes;
 

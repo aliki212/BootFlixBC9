@@ -47,15 +47,15 @@ namespace BootFlixBC9.Controllers
             return View(viewer);
         }
         //GET NEW - getting the data to present to input the data and then post them
-        public ActionResult New()
+        public ActionResult New() // WAS NEW
         {
             var membershiptypes = context.MembershipTypes.ToList();
-            var viewmodel = new NewViewerViewModel()
+            var viewmodel = new ViewerFormViewModel()
             {
                 MembershipTypes = membershiptypes
             };
            
-            return View(viewmodel);
+            return View("ViewerForm", viewmodel);
         }
 
         //POST
@@ -75,14 +75,14 @@ namespace BootFlixBC9.Controllers
             if (viewer == null)
                 return HttpNotFound();
 
-            var viewModel = new NewViewerViewModel
+            var viewModel = new ViewerFormViewModel
             {
                 Viewer = viewer,
                 MembershipTypes = context.MembershipTypes.ToList()
             };
         
 
-            return View("New", viewModel);
+            return View("ViewerForm", viewModel);
         }
     }//
 }
