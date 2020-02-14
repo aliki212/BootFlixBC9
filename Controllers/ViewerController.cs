@@ -47,12 +47,13 @@ namespace BootFlixBC9.Controllers
             return View(viewer);
         }
         //GET NEW - getting the data to present to input the data and then post them
-        public ActionResult New() // WAS NEW
+        public ActionResult New() 
         {
             var membershiptypes = context.MembershipTypes.ToList();
             var viewmodel = new ViewerFormViewModel()
             {
-                MembershipTypes = membershiptypes
+                MembershipTypes = membershiptypes, //so far we just used it for getting the membership types
+                Viewer = new Viewer()
             };
            
             return View("ViewerForm", viewmodel);
