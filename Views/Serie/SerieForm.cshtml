@@ -1,7 +1,9 @@
 ﻿@model BootFlixBC9.ViewModels.SerieFormViewModel
 @{
     ViewBag.Title = "SerieForm";
-}<h2>Serie Details</h2>@using (Html.BeginForm("Save", "Serie"))
+}
+<h2>@Model.Title</h2>
+@using (Html.BeginForm("Save", "Serie"))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "Please fix the following errors:")

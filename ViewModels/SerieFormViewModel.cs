@@ -11,5 +11,7 @@ namespace BootFlixBC9.ViewModels
         public IEnumerable<Genre> Genres { get; set; }
 
         public Serie Serie { get; set; }
+        
+        public string Title { get; set; }
     }
 }
