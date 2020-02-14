@@ -67,15 +67,29 @@ namespace BootFlixBC9.Controllers
             var genres = context.Genres.ToList();
             var viewmodel = new SerieFormViewModel()
             {
-                Genres = genres
+                Genres = genres,
+                // 2 // set the serie new object so id is not null when creating as we saw in viewers
+                Serie = new Serie()
             };
 
             return View("SerieForm", viewmodel);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Serie serie)
         {
+            // 1 // worst case scenario return the viewmodel with the list of genres
+            if (!ModelState.IsValid)
+            {
+                var genres = context.Genres.ToList();
+                var viewModel = new SerieFormViewModel()
+                {
+                    Genres = genres                   
+                };
+
+                return View("ViewerForm", viewModel);
+            }
 
             if (serie.Id == 0) //meanst the viewer coming back is without id = then go create one!
             {

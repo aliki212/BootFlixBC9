@@ -26,6 +26,7 @@ namespace BootFlixBC9.Models
         public byte Seasons { get; set; }
 
         [Required]
+        [Display(Name="Genre")]
         public byte GenreId { get; set; }
 
         public Genre Genre { get; set; }
