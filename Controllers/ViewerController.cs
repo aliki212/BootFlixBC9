@@ -61,6 +61,7 @@ namespace BootFlixBC9.Controllers
 
         //POST
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Viewer viewer)
         {
             // worst case scenario

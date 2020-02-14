@@ -7,6 +7,7 @@
 
 @using (Html.BeginForm("Save", "Viewer"))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(false, "Please fix the following errors:")
     <div class="form-group">
         @Html.LabelFor(v => v.Viewer.Name)
@@ -40,4 +41,4 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval");
-    }
+}
