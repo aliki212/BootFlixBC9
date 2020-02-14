@@ -56,7 +56,7 @@ namespace BootFlixBC9.Controllers
             {
                 Serie = serie,
                 Genres = context.Genres.ToList(),
-                Title = "Edit Series"
+                //Title = "Edit Series"
             };
 
             return View("SerieForm",viewModel);
@@ -71,7 +71,7 @@ namespace BootFlixBC9.Controllers
                 Genres = genres,
                 // 2 // set the serie new object so id is not null when creating as we saw in viewers
                 Serie = new Serie(),
-                Title = "Add a New Series"
+                //Title = "Add a New Series"
             };
 
             return View("SerieForm", viewmodel);
@@ -88,7 +88,7 @@ namespace BootFlixBC9.Controllers
                 var viewModel = new SerieFormViewModel()
                 {
                     Genres = genres,
-                    Title = "Add a New Series"
+                    //Title = "Add a New Series"
                 };
 
                 return View("ViewerForm", viewModel);

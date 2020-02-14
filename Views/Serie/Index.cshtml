@@ -11,6 +11,7 @@
             <th>Serie</th>
         </tr>
     </thead>
+    <p>@Html.ActionLink("New Serie", "New", "Serie", null, new { @class = "bnt btn-primary" }) </p>
     <tbody>
         @foreach(var serie in Model)
         {

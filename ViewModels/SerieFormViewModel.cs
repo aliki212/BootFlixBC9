@@ -12,6 +12,15 @@ namespace BootFlixBC9.ViewModels
 
         public Serie Serie { get; set; }
         
-        public string Title { get; set; }
+        public string Title { get
+            {
+                
+                    if (Serie != null && Serie.Id != 0)
+                    {
+                        return "Edit Serie";
+                    }
+                    return "New Serie";
+                }
+                        }
     }
 }
