@@ -15,6 +15,7 @@ namespace BootFlixBC9.Models
         public string Name { get; set; }
 
         [Display(Name = "Date of Birth")]
+        [AdultMembers]
 
         public DateTime? Birtdate { get; set; }
 
