@@ -38,6 +38,13 @@ namespace BootFlixBC9.ViewModels
 
             } }
         //NO MORE public Serie Serie { get; set; }
-
+        public SerieFormViewModel(Serie serie)
+        {
+            Id = serie.Id;
+            Name = serie.Name;
+            DateReleased = serie.DateReleased;
+            Seasons = serie.Seasons;
+            GenreId = serie.GenreId;
+        }
     }
 }

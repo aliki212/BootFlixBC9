@@ -54,13 +54,9 @@ namespace BootFlixBC9.Controllers
             if (serie == null)
                 return HttpNotFound();
 
-            var viewModel = new SerieFormViewModel
+            var viewModel = new SerieFormViewModel(serie)
             {
-                Id = serie.Id,
-                Name = serie.Name,
-                DateReleased = serie.DateReleased,
-                Seasons = serie.Seasons,
-                GenreId = serie.GenreId,
+               
                 Genres = context.Genres.ToList(),
                 //Title = "Edit Series"
             };
