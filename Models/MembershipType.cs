@@ -20,5 +20,9 @@ namespace BootFlixBC9.Models
 
         public byte DiscountRate { get; set; }
 
+        public readonly static byte Unknown = 0;
+
+        public readonly static byte Free = 1;
+
     }
 }

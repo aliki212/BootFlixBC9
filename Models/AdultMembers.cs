@@ -12,11 +12,13 @@ namespace BootFlixBC9.Models
         {
             //First we need to speak to a viewer object
             var viewer = (Viewer)validationContext.ObjectInstance;
-            //Third we can make checks for specific MembershipTypes - business rules
-            if (viewer.MembershipTypeId == 1)
+            //Defensive programming > adding a static readonly/couldBconstant free & unknown to reach edge cases
+            if (viewer.MembershipTypeId == MembershipType.Free ||
+                viewer.MembershipTypeId == MembershipType.Unknown)
+
                 return ValidationResult.Success;//ie. for the free membership is for all birthdates
 
-            //Second we check the birthdate 
+            
             if (viewer.Birtdate == null)
                 return new ValidationResult("Birthdate is Required");
 
