@@ -46,5 +46,9 @@ namespace BootFlixBC9.ViewModels
             Seasons = serie.Seasons;
             GenreId = serie.GenreId;
         }
+        public SerieFormViewModel()
+        {
+            Id = 0;
+        }
     }
 }
