@@ -38,5 +38,6 @@ namespace BootFlixBC9.ViewModels
 
             } }
         //NO MORE public Serie Serie { get; set; }
+
     }
 }
