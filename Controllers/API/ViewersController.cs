@@ -44,8 +44,9 @@ namespace BootFlixBC9.Controllers.API
             return viewer;
         }
 
-        [HttpPut]
+        // PUT /api/viewer/id
 
+        [HttpPut]
         public void UpdateViewer(int id, Viewer viewer)
         {
             if(!ModelState.IsValid)
@@ -59,6 +60,17 @@ namespace BootFlixBC9.Controllers.API
             viewerDb.IsSubscribedToNews = viewer.IsSubscribedToNews;
             viewerDb.MembershipTypeId = viewer.MembershipTypeId;
 
+            context.SaveChanges();
+        }
+
+        //DELETE /api/viewer/id
+        [HttpDelete]
+        public void DeleteViewer(int id)
+        {
+            var viewerDb = context.Viewers.SingleOrDefault(v => v.Id == id);
+            if (viewerDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            context.Viewers.Remove(viewerDb);
             context.SaveChanges();
         }
 

@@ -183,6 +183,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\ViewerController.cs" />
+    <Compile Include="DTOs\ViewerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
