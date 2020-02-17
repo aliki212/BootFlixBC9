@@ -182,11 +182,13 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\SeriesController.cs" />
     <Compile Include="Controllers\API\ViewersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\ViewerController.cs" />
+    <Compile Include="DTOs\SerieDto.cs" />
     <Compile Include="DTOs\ViewerDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
