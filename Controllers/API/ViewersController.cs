@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
 using AutoMapper;
+using BootFlixBC9.DTOs;
 
 namespace BootFlixBC9.Controllers.API
 {
@@ -19,19 +20,25 @@ namespace BootFlixBC9.Controllers.API
         //}
 
 
-            //GET /api/viewers
-        public IEnumerable<Viewer> GetViewers()
+        //GET /api/viewers
+        //public IEnumerable<Viewer> GetViewers()
+        //{
+        //    return context.Viewers.ToList();
+        //}
+        public IEnumerable<ViewerDto> GetViewers()
         {
-            return context.Viewers.ToList();
+            return context.Viewers.ToList()
+                .Select(Mapper.Map<Viewer, ViewerDto>);
         }
 
         // GET /api/viewers/id
-        public Viewer GetViewer(int id)
+        public ViewerDto GetViewer(int id)
         {
             var viewer = context.Viewers.SingleOrDefault(c => c.Id == id);
                 if(viewer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            return viewer;
+
+            return Mapper.Map<Viewer, ViewerDto>(viewer);
         }
 
         // POST /api/viewers

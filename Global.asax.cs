@@ -18,11 +18,11 @@ namespace BootFlixBC9
     {
         protected void Application_Start()
         {
-            //Mapper.Initialize(c => c.AddProfileOrganizationProfile > ());
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.AddProfile(new OrganizationProfile());
-            });
+            Mapper.Initialize(c => c.AddProfile<OrganizationProfile> ());
+            //var configuration = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.AddProfile(new OrganizationProfile());
+            //});
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
