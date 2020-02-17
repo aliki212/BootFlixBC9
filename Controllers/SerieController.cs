@@ -53,7 +53,7 @@ namespace BootFlixBC9.Controllers
 
             if (serie == null)
                 return HttpNotFound();
-
+            // This is the part that connects serie class object with viewModel class to pass the object
             var viewModel = new SerieFormViewModel(serie)
             {
                
@@ -72,7 +72,7 @@ namespace BootFlixBC9.Controllers
             {
                 Genres = genres,
                 // 2 // set the serie new object so id is not null when creating as we saw in viewers
-                Serie = new Serie(),
+                //Serie = new Serie(),
                 //Title = "Add a New Series"
             };
 
@@ -87,7 +87,7 @@ namespace BootFlixBC9.Controllers
             if (!ModelState.IsValid)
             {
                 var genres = context.Genres.ToList();
-                var viewModel = new SerieFormViewModel()
+                var viewModel = new SerieFormViewModel(serie)
                 {
                     Genres = genres,
                     //Title = "Add a New Series"
@@ -105,7 +105,7 @@ namespace BootFlixBC9.Controllers
             else
             {
                 var serieDb = context.Series.Single(v => v.Id == serie.Id);
-                
+               
                 serieDb.Name = serie.Name;
                 serieDb.GenreId = serie.GenreId;
                 serieDb.Seasons = serie.Seasons;
