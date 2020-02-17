@@ -43,19 +43,21 @@ namespace BootFlixBC9.Controllers.API
 
         // POST /api/viewers
         [HttpPost]
-        public Viewer CreateViewer(Viewer viewer)
+        public ViewerDto CreateViewer(ViewerDto viewerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
+            var viewer = Mapper.Map<ViewerDto, Viewer>(viewerDto);
+
             context.Viewers.Add(viewer);
             context.SaveChanges();
-            return viewer;
+            return viewerDto;
         }
 
         // PUT /api/viewer/id
 
         [HttpPut]
-        public void UpdateViewer(int id, Viewer viewer)
+        public void UpdateViewer(int id, ViewerDto viewerDto)
         {
             if(!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -63,15 +65,18 @@ namespace BootFlixBC9.Controllers.API
             var viewerDb = context.Viewers.SingleOrDefault(c => c.Id == id);
             if (viewerDb == null) // if the db viewer from the id =null
                 throw new HttpResponseException(HttpStatusCode.NotFound);
-            viewerDb.Name = viewer.Name;
-            viewerDb.Birtdate = viewer.Birtdate;
-            viewerDb.IsSubscribedToNews = viewer.IsSubscribedToNews;
-            viewerDb.MembershipTypeId = viewer.MembershipTypeId;
+
+            Mapper.Map(viewerDto, viewerDb);
+            //viewerDb.Name = viewer.Name;
+            //viewerDb.Birtdate = viewer.Birtdate;
+            //viewerDb.IsSubscribedToNews = viewer.IsSubscribedToNews;
+            //viewerDb.MembershipTypeId = viewer.MembershipTypeId;
 
             context.SaveChanges();
         }
 
         //DELETE /api/viewer/id
+        //no changes for Dto implementation
         [HttpDelete]
         public void DeleteViewer(int id)
         {
