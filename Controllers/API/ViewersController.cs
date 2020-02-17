@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
+using AutoMapper;
 
 namespace BootFlixBC9.Controllers.API
 {

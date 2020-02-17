@@ -7,6 +7,10 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
 using System.Web.Routing;
+using BootFlixBC9.DTOs;
+using AutoMapper;
+using BootFlixBC9.App_Start;
+using AutoMapper;
 
 namespace BootFlixBC9
 {
@@ -14,6 +18,11 @@ namespace BootFlixBC9
     {
         protected void Application_Start()
         {
+            //Mapper.Initialize(c => c.AddProfileOrganizationProfile > ());
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new OrganizationProfile());
+            });
             GlobalConfiguration.Configure(WebApiConfig.Register);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
