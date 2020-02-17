@@ -44,7 +44,23 @@ namespace BootFlixBC9.Controllers.API
             return viewer;
         }
 
+        [HttpPut]
 
+        public void UpdateViewer(int id, Viewer viewer)
+        {
+            if(!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            var viewerDb = context.Viewers.SingleOrDefault(c => c.Id == id);
+            if (viewerDb == null) // if the db viewer from the id =null
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            viewerDb.Name = viewer.Name;
+            viewerDb.Birtdate = viewer.Birtdate;
+            viewerDb.IsSubscribedToNews = viewer.IsSubscribedToNews;
+            viewerDb.MembershipTypeId = viewer.MembershipTypeId;
+
+            context.SaveChanges();
+        }
 
     }//
 }
