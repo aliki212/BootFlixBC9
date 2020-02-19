@@ -45,16 +45,30 @@ else
         $("#viewers .js-delete").on("click", function () {
             let button = $(this);
 
-            if (confirm("Delete?Are U Sure?")) {
-                $.ajax({
-                    url: "/api/viewers/" + $(this).attr("data-viewer-id"),
+            bootbox.confirm("Delete?Are U SURE SURE?", function (result) {
+                if (result) {
+                    $.ajax({
+                    url: "/api/viewers/" + button.attr("data-viewer-id"),
                     method: "DELETE",
                     success: function () {
                         //console.log("YES YES YES");
                         button.parents("tr").remove();
                     }
                 })
-            }
+
+                }//
+            });
+
+            //if (confirm("Delete?Are U Sure?")) {
+            //    $.ajax({
+            //        url: "/api/viewers/" + $(this).attr("data-viewer-id"),
+            //        method: "DELETE",
+            //        success: function () {
+            //            //console.log("YES YES YES");
+            //            button.parents("tr").remove();
+            //        }
+            //    })
+            //}
         });
     });
 </script>
