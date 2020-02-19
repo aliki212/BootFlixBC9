@@ -43,12 +43,15 @@ else
 <script>
     $(document).ready(function () {
         $("#viewers .js-delete").on("click", function () {
+            let button = $(this);
+
             if (confirm("Delete?Are U Sure?")) {
                 $.ajax({
                     url: "/api/viewers/" + $(this).attr("data-viewer-id"),
                     method: "DELETE",
                     success: function () {
                         //console.log("YES YES YES");
+                        button.parents("tr").remove();
                     }
                 })
             }
