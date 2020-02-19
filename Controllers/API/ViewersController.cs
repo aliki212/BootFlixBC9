@@ -21,6 +21,7 @@ namespace BootFlixBC9.Controllers.API
 
 
         //GET /api/viewers
+        //Initial method of GetViewers without Dtos/AutoMapper - simple API
         //public IEnumerable<Viewer> GetViewers()
         //{
         //    return context.Viewers.ToList();
