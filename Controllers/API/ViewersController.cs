@@ -13,11 +13,11 @@ namespace BootFlixBC9.Controllers.API
 {
     public class ViewersController : ApiController
     {
-        private ApplicationDbContext context = new ApplicationDbContext();
-        //public class ViewersController 
-        //{ 
-        //    context = new ApplicationDbContext;
-        //}
+        private ApplicationDbContext context;// = new ApplicationDbContext();
+        public ViewersController()
+        {
+            context = new ApplicationDbContext();
+        }
 
 
         //GET /api/viewers
@@ -38,7 +38,8 @@ namespace BootFlixBC9.Controllers.API
         {
             var viewer = context.Viewers.SingleOrDefault(c => c.Id == id);
                 if(viewer == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound(); //since now it is an IHttpActionResult type of method we can return an Http type
+                //throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return Ok(Mapper.Map<Viewer, ViewerDto>(viewer));
         }
