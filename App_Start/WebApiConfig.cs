@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http.Headers;
 
 namespace BootFlixBC9
 {
@@ -16,6 +17,8 @@ namespace BootFlixBC9
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Formatting.Indented;
             ///
+            //Produce json Format
+            //config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.MapHttpAttributeRoutes();
 
