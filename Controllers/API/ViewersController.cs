@@ -33,18 +33,19 @@ namespace BootFlixBC9.Controllers.API
         }
 
         // GET /api/viewers/id
-        public ViewerDto GetViewer(int id)
+        //Change ViewerDto to iHttpActionResult
+        public IHttpActionResult GetViewer(int id)
         {
             var viewer = context.Viewers.SingleOrDefault(c => c.Id == id);
                 if(viewer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            return Mapper.Map<Viewer, ViewerDto>(viewer);
+            return Ok(Mapper.Map<Viewer, ViewerDto>(viewer));
         }
 
         // POST /api/viewers
         [HttpPost]
-        public ViewerDto CreateViewer(ViewerDto viewerDto)
+        public IHttpActionResult CreateViewer(ViewerDto viewerDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -52,7 +53,8 @@ namespace BootFlixBC9.Controllers.API
 
             context.Viewers.Add(viewer);
             context.SaveChanges();
-            return viewerDto;
+            //show where the created resource is located
+            return Created(new Uri(Request.RequestUri + "/" + viewer.Id), viewerDto);
         }
 
         // PUT /api/viewer/id
