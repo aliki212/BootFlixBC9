@@ -31,18 +31,18 @@ namespace BootFlixBC9.Controllers.API
         }
 
         // GET /api/series/id
-        public SerieDto GetSeries(int id)
+        public IHttpActionResult GetSeries(int id)
         {
             var serie = context.Series.SingleOrDefault(c => c.Id == id);
             if (serie == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<Serie, SerieDto>(serie);
+            return Ok(Mapper.Map<Serie, SerieDto>(serie));
         }
 
         // POST /api/viewers
         [HttpPost]
-        public SerieDto CreateSerie(SerieDto serieDto)
+        public IHttpActionResult CreateSerie(SerieDto serieDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -50,7 +50,8 @@ namespace BootFlixBC9.Controllers.API
 
             context.Series.Add(serie);
             context.SaveChanges();
-            return serieDto;
+            //return serieDto;
+            return Created(new Uri(Request.RequestUri + "/" + serie.Id), serieDto);
         }
 
         // PUT /api/serie/id
