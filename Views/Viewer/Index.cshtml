@@ -10,13 +10,14 @@
 }
 else
 {
-<table class="table table-bordered">
+<table id="viewers" class="table table-bordered">
     <thead>
         <tr>
             <th>Viewer</th>
             <th>Viewer Name</th>
             <th>Discount Rate</th>
             <th>Membership Type</th>
+            <th>Delete</th>
         </tr>
         
     </thead>
@@ -28,9 +29,30 @@ else
             <td>@Html.ActionLink(viewer.Name, "Edit", "Viewer", new { id = viewer.Id }, null)</td>
             <td>@viewer.MembershipType.DiscountRate%</td>
             <td>@viewer.MembershipType.Name</td>
+            <td>
+                <button data-viewer-id="@viewer.Id" class="btn btn-link js-delete">Delete</button>
+            </td>
         </tr>
         }
     </tbody>
 </table>
 }
 
+@section scripts
+{
+<script>
+    $(document).ready(function () {
+        $("#viewers .js-delete").on("click", function () {
+            if (confirm("Delete?Are U Sure?")) {
+                $.ajax({
+                    url: "/api/viewers/" + $(this).attr("data-viewer-id"),
+                    method: "DELETE",
+                    success: function () {
+                        //console.log("YES YES YES");
+                    }
+                })
+            }
+        });
+    });
+</script>
+}

@@ -79,7 +79,7 @@ namespace BootFlixBC9.Controllers.API
             context.SaveChanges();
         }
 
-        //DELETE /api/viewer/id
+        //DELETE /api/viewers/id
         //no changes for Dto implementation
         [HttpDelete]
         public void DeleteViewer(int id)
