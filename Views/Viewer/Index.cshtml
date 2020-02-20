@@ -5,94 +5,116 @@
 
 <h2>Viewers</h2>
 
-    <table id="viewers" class="table table-bordered">
-        <thead>
+<table id="viewers" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Viewer Name</th>
+            <th>Membership Type</th>
+            <th>Is Subscribed?</th>
+            <th>Delete</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @*@foreach (var viewer in Model)
+            {
             <tr>
-                <th>Viewer Name</th>
-                <th>Membership Type</th>
-                <th>Is Subscribed?</th>
-                <th>Delete</th>
+                <td>@viewer.Name</td>
+                <td>@Html.ActionLink(viewer.Name, "Edit", "Viewer", new { id = viewer.Id }, null)</td>
+                <td>@viewer.MembershipType.DiscountRate%</td>
+                <td>@viewer.MembershipType.Name</td>
+                <td>
+                    <button data-viewer-id="@viewer.Id" class="btn btn-link js-delete">Delete</button>
+                </td>
             </tr>
+            }*@
+    </tbody>
+</table>
 
-        </thead>
-        <tbody>
-            @*@foreach (var viewer in Model)
-                {
-                <tr>
-                    <td>@viewer.Name</td>
-                    <td>@Html.ActionLink(viewer.Name, "Edit", "Viewer", new { id = viewer.Id }, null)</td>
-                    <td>@viewer.MembershipType.DiscountRate%</td>
-                    <td>@viewer.MembershipType.Name</td>
-                    <td>
-                        <button data-viewer-id="@viewer.Id" class="btn btn-link js-delete">Delete</button>
-                    </td>
-                </tr>
-                }*@
-        </tbody>
-    </table>
-
-@*Problem that showed up once we run first time the DataTable Query to substitute the Index() in ViewerControler: 
+@*Problem that showed up once we run first time the DataTable Query to substitute the Index() in ViewerControler:
     DataTables warning: table id=viewers - Requested unknown parameter 'membershipType.name' for row 0, column 1. For more information about this error, please see http://datatables.net/tn/4*@
 
 @section scripts
 {
+    @*<script>
+            $(document).ready(function () {
+                var table = $("#viewers").DataTable({
+                    ajax: {
+                        url: "/api/viewers/",
+                        dataSrc:""
+                    },
+                    columns: [
+                        {
+                            data: "name",
+                            render: function (data, type, viewer) {
+                                return "<a href='/viewer/edit/" + viewer.id + "'>" + viewer.name + "</a>";
+                            }
+                        },
+                        {
+                            data: "membershipType.name"
+                        },
+                        {
+                            data: "id",
+                            render: function (data) {
+                                return "<button class='btn btn-link js-delete' data-viewer-id=" + data + ">Delete</button>"
+                            }
+                        }
+                    ]
+                });            $("#viewers").on("click",".js-delete", function () {
+                    let button = $(this);                bootbox.confirm("Delete?Are You SURE SURE?", function (result) {
+                        if (result) {
+                                $.ajax({
+                                url: "/api/viewers/" + button.attr("data-viewer-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    //console.log("YES YES YES");
+                                    //button.parents("tr").remove();
+                                    table.row(button.parents("tr")).remove().draw();
+                                }
+                            })
+                        }
+                    });
+                });
+            });
+        </script>*@
     <script>
         $(document).ready(function () {
-            $("#viewers").DataTable({
-                //creating an object in the datatable which has an ajax object containing:
+            var table = $("#viewers").DataTable({
                 ajax: {
-                    url: "/api/viewers/", //call only the viewers not like bellow where we used it to call the POST DELETE method
+                    url: "/api/viewers/",
                     dataSrc: ""
                 },
                 columns: [
                     {
                         data: "name",
                         render: function (data, type, viewer) {
-                            return "<a href='/viewer/edit/'" + viewer.id + ">" + viewer.name + "</a>";
+                            return "<a href='/viewer/edit/" + viewer.id + "'>" + viewer.name + "</a>";
                         }
-                    },//closing of first column object
+                    },
                     {
                         data: "membershipType.name"
                     },
                     {
-                        data: "isSubscribedToNews"
-                    },
-                    {
                         data: "id",
                         render: function (data) {
-                            return "<button class = 'btn btn-link js-delete' data-viewer-id=" + data + ">Delete</button>";
+                            return "<button class='btn btn-link js-delete' data-viewer-id=" + data + ">Delete</button>"
                         }
                     }
                 ]
-            });
-
-            $("#viewers").on("click", ".js-delete", function () { //In table w #viewers > on click of a js-delete button > do this function
-                let button = $(this);
-
-                bootbox.confirm("Delete?Are U SURE SURE?", function (result) {
+            }); $("#viewers").on("click", ".js-delete", function () {
+                let button = $(this); bootbox.confirm("Delete?Are You SURE SURE?", function (result) {
                     if (result) {
                         $.ajax({
                             url: "/api/viewers/" + button.attr("data-viewer-id"),
                             method: "DELETE",
                             success: function () {
                                 //console.log("YES YES YES");
-                                button.parents("tr").remove();
+                                //button.parents("tr").remove();
+                                table.row(button.parents("tr")).remove().draw();
                             }
                         })
-
-                    }//
+                    }
                 });
-
-                //if (confirm("Delete?Are U Sure?")) {
-                //    $.ajax({
-                //        url: "/api/viewers/" + $(this).attr("data-viewer-id"),
-                //        method: "DELETE",
-                //        success: function () {
-                //            //console.log("YES YES YES");
-                //            button.parents("tr").remove();
-                //        }
-                //    })
-                //}
             });
         });
     </script>
