@@ -28,7 +28,9 @@ namespace BootFlixBC9.Controllers.API
         //}
         public IEnumerable<ViewerDto> GetViewers()
         {
-            return context.Viewers.ToList()
+            return context.Viewers
+                .Include(v => v.MembershipType) //included it when we started changing Index() for API Dtos change BUT in DTO's theres no Membership TYpe
+                .ToList()
                 .Select(Mapper.Map<Viewer, ViewerDto>);
         }
 

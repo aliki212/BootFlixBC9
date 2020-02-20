@@ -30,10 +30,11 @@ namespace BootFlixBC9.Controllers
         // GET: Viewer
         public ActionResult Index()
         {
-            var viewers = context.Viewers
-                .Include(v => v.MembershipType)
-                .ToList();
-            return View(viewers);
+            //var viewers = context.Viewers
+            //    .Include(v => v.MembershipType)
+            //    .ToList();
+            //return View(viewers);
+            return View();
         }
         
         public ActionResult Details(int id)
