@@ -18,22 +18,4 @@ namespace BootFlixBC9.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public DbSet<MembershipType>MembershipTypes { get; set; }
-        public DbSet<Serie>Series { get; set; }
-        public DbSet<Viewer>Viewers { get; set; }
-        public DbSet<Genre>Genres { get; set; }
-
-        public ApplicationDbContext()
-            : base("BootFlixBC9DBContext", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-
-            return new ApplicationDbContext();
-        }
-    }
 }
