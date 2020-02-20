@@ -25,7 +25,7 @@ namespace BootFlixBC9.DTOs
 
        // [Display(Name = "Membership Type")]
 
-        // public MembershipType MembershipType { get; set; } //AND navigation property -> virtual only for lazy loading
+        public MembershipTypeDto MembershipType { get; set; } //AND navigation property -> virtual only for lazy loading
 
     }
 }

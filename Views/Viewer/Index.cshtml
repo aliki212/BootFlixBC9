@@ -4,12 +4,7 @@
 }
 
 <h2>Viewers</h2>
-@if (!Model.Any())
-{
-    <text>We Dont Have Any Viewers Yet.</text>
-}
-else
-{
+
     <table id="viewers" class="table table-bordered">
         <thead>
             <tr>
@@ -35,7 +30,7 @@ else
                 }*@
         </tbody>
     </table>
-}
+
 @*Problem that showed up once we run first time the DataTable Query to substitute the Index() in ViewerControler: 
     DataTables warning: table id=viewers - Requested unknown parameter 'membershipType.name' for row 0, column 1. For more information about this error, please see http://datatables.net/tn/4*@
 

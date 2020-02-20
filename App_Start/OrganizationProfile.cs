@@ -16,6 +16,8 @@ namespace BootFlixBC9.App_Start
             CreateMap<ViewerDto, Viewer>();
             CreateMap<Serie, SerieDto>();
             CreateMap<SerieDto, Serie>();
+            CreateMap<MembershipType, MembershipTypeDto>();
+            //CreateMap<MembershipTypeDto, MembershipType>();
         }
     }
 }
