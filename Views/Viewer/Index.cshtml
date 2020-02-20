@@ -43,7 +43,7 @@ else
 <script>
     $(document).ready(function () {
         $("#viewers").DataTable();
-        $("#viewers .js-delete").on("click", function () {
+        $("#viewers").on("click",".js-delete", function() { //In table w #viewers > on click of a js-delete button > do this function
             let button = $(this);
 
             bootbox.confirm("Delete?Are U SURE SURE?", function (result) {
