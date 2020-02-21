@@ -8,7 +8,11 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Serie</th>
+            <th>Name</th>
+            <th>Genre</th>
+            <th>Seasons</th>
+            <th>Date Added</th>
+            <th>Date Released</th>
         </tr>
     </thead>
     <p>@Html.ActionLink("New Serie", "New", "Serie", null, new { @class = "btn btn-primary" }) </p>
@@ -18,7 +22,10 @@
             <tr>
                 @*<td>@serie.Name</td>*@
                 <td>@Html.ActionLink(serie.Name, "Edit", "Serie", new { id = serie.Id }, null)</td>
+                <td>@serie.Seasons</td>
                 <td>@serie.Genre.Name</td>
+                <td>@serie.DateAdded</td>
+                <td>@serie.DateReleased</td>
             </tr>
         }
     </tbody>
