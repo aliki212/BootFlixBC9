@@ -234,6 +234,10 @@
     <Compile Include="Migrations\202002121726397_PopulateGenres.Designer.cs">
       <DependentUpon>202002121726397_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002201851429_SeedUsers.cs" />
+    <Compile Include="Migrations\202002201851429_SeedUsers.Designer.cs">
+      <DependentUpon>202002201851429_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -602,6 +606,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002121726397_PopulateGenres.resx">
       <DependentUpon>202002121726397_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002201851429_SeedUsers.resx">
+      <DependentUpon>202002201851429_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
