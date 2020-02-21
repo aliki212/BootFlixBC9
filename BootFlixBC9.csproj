@@ -558,12 +558,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Serie\Perfect.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
-    <Content Include="Views\Serie\Index.cshtml" />
+    <Content Include="Views\Serie\SeriesList.cshtml" />
     <Content Include="Views\Viewer\Index.cshtml" />
     <Content Include="Views\Viewer\Details.cshtml" />
     <Content Include="Views\Serie\Details.cshtml" />
     <Content Include="Views\Viewer\ViewerForm.cshtml" />
     <Content Include="Views\Serie\SerieForm.cshtml" />
+    <Content Include="Views\Serie\SeriesListReadOnly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

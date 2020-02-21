@@ -31,10 +31,14 @@ namespace BootFlixBC9.Controllers
         // GET: Series
         public ViewResult Index()
         {
-            var series = context.Series
-                .Include(v => v.Genre)
-                .ToList();
-            return View(series);
+            if (User.IsInRole("SeriesManager"))
+                return View("SeriesList");
+            else
+                return View("SeriesListReadOnly");
+            //var series = context.Series
+            //    .Include(v => v.Genre)
+            //    .ToList();
+            //return View(series);
         }
         
         public ActionResult Details(int id)
@@ -64,6 +68,7 @@ namespace BootFlixBC9.Controllers
             return View("SerieForm",viewModel);
         }
 
+        [Authorize (Roles = "SeriesManager")]
         //GET NEW - getting the data to present to input the data and then post them //copy from ViewerController
         public ActionResult New() // WAS NEW
         {
