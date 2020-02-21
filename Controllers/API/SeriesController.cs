@@ -7,6 +7,7 @@ using System.Web.Http;
 using BootFlixBC9.Models;
 using AutoMapper;
 using BootFlixBC9.DTOs;
+using System.Data.Entity;
 
 
 namespace BootFlixBC9.Controllers.API
@@ -26,7 +27,9 @@ namespace BootFlixBC9.Controllers.API
 
         public IEnumerable<SerieDto> GetSeries()
         {
-            return context.Series.ToList()
+            return context.Series
+                .Include(s => s.Genre)
+                .ToList()
                 .Select(Mapper.Map<Serie, SerieDto>);
         }
 

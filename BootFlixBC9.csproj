@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
     <Compile Include="Controllers\ViewerController.cs" />
+    <Compile Include="DTOs\GenreDto.cs" />
     <Compile Include="DTOs\MembershipTypeDto.cs" />
     <Compile Include="DTOs\SerieDto.cs" />
     <Compile Include="DTOs\ViewerDto.cs" />

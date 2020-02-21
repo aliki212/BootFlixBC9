@@ -28,6 +28,6 @@ namespace BootFlixBC9.DTOs
         [Display(Name = "Genre")]
         public byte GenreId { get; set; }
 
-        //public Genre Genre { get; set; }
+        public GenreDto Genre { get; set; }
     }
 }
