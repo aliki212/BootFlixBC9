@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BootFlixBC9.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using BootFlixBC9.ViewModels;
 
 namespace BootFlixBC9.Controllers
 {
@@ -152,7 +153,7 @@ namespace BootFlixBC9.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email , Passport = model.Passport};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
