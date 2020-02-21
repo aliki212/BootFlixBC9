@@ -31,7 +31,7 @@ namespace BootFlixBC9.Controllers
         // GET: Series
         public ViewResult Index()
         {
-            if (User.IsInRole("SeriesManager"))
+            if (User.IsInRole(RoleName.SeriesManager))
                 return View("SeriesList");
             else
                 return View("SeriesListReadOnly");
@@ -68,7 +68,7 @@ namespace BootFlixBC9.Controllers
             return View("SerieForm",viewModel);
         }
 
-        [Authorize (Roles = "SeriesManager")]
+        [Authorize (Roles = RoleName.SeriesManager)]
         //GET NEW - getting the data to present to input the data and then post them //copy from ViewerController
         public ActionResult New() // WAS NEW
         {
