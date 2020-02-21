@@ -243,6 +243,10 @@
     <Compile Include="Migrations\202002211720048_AddedBoolIsReleased.Designer.cs">
       <DependentUpon>202002211720048_AddedBoolIsReleased.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002211851207_AddedPassportInApplicationUser.cs" />
+    <Compile Include="Migrations\202002211851207_AddedPassportInApplicationUser.Designer.cs">
+      <DependentUpon>202002211851207_AddedPassportInApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -619,6 +623,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002211720048_AddedBoolIsReleased.resx">
       <DependentUpon>202002211720048_AddedBoolIsReleased.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002211851207_AddedPassportInApplicationUser.resx">
+      <DependentUpon>202002211851207_AddedPassportInApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
