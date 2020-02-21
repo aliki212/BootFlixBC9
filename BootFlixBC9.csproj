@@ -239,6 +239,10 @@
     <Compile Include="Migrations\202002201851429_SeedUsers.Designer.cs">
       <DependentUpon>202002201851429_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002211720048_AddedBoolIsReleased.cs" />
+    <Compile Include="Migrations\202002211720048_AddedBoolIsReleased.Designer.cs">
+      <DependentUpon>202002211720048_AddedBoolIsReleased.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -610,6 +614,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002201851429_SeedUsers.resx">
       <DependentUpon>202002201851429_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002211720048_AddedBoolIsReleased.resx">
+      <DependentUpon>202002211720048_AddedBoolIsReleased.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -29,5 +29,7 @@ namespace BootFlixBC9.DTOs
         public byte GenreId { get; set; }
 
         public GenreDto Genre { get; set; }
+
+        public bool IsReleased { get; set; }
     }
 }

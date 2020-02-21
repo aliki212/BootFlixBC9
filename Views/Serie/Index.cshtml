@@ -4,7 +4,7 @@
 }
 
 <h2>Series</h2>
-
+<p>@Html.ActionLink("New Serie", "New", "Serie", null, new { @class = "btn btn-primary" }) </p>
 <table id="series" class="table table-bordered">
     <thead>
         <tr>
@@ -14,29 +14,32 @@
             <th>Date Released</th>
             <th>Delete</th>
             <th>Genre</th>
+            <th>IsReleased</th>
         </tr>
     </thead>
-    <p>@Html.ActionLink("New Serie", "New", "Serie", null, new { @class = "btn btn-primary" }) </p>
+
     <tbody>
-        @*@foreach(var serie in Model)
-            {
-                <tr>
-                    <td>@serie.Name</td>
-    <td>@Html.ActionLink(serie.Name, "Edit", "Serie", new { id = serie.Id }, null)</td>
-    <td>@serie.Seasons</td>
-    <td>@serie.Genre.Name</td>
-    <td>@serie.DateAdded</td>
-    <td>@serie.DateReleased</td>
-    <td>
-        <button data-viewer-id="@serie.Id" class="btn btn-link js-delete">Delete</button>
-    </td>
-    </tr>
-    }*@
+        @*
+
+                    @foreach(var serie in Model)
+                    {
+                        <tr>
+                            <td>@serie.Name</td>
+            <td>@Html.ActionLink(serie.Name, "Edit", "Serie", new { id = serie.Id }, null)</td>
+            <td>@serie.Seasons</td>
+            <td>@serie.Genre.Name</td>
+            <td>@serie.DateAdded</td>
+            <td>@serie.DateReleased</td>
+            <td>
+                <button data-viewer-id="@serie.Id" class="btn btn-link js-delete">Delete</button>
+            </td>
+            </tr>
+            }*@
     </tbody>
 </table>
 
 @section scripts{
-<script>
+    <script>
     $(document).ready(function () {
         var table = $("#series").DataTable({
             ajax: {
@@ -67,6 +70,9 @@
                 },
                 {
                     data: "genre.name"
+                },
+                {
+                    data: "isReleased"
                 }
             ]
         });
@@ -88,5 +94,5 @@
 
     }); @*document ready closing tag*@
 
-</script>
-    } @*end  of section scripts*@
+    </script>
+} @*end  of section scripts*@
