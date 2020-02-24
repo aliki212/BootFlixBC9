@@ -16,6 +16,8 @@ namespace BootFlixBC9.Models
         public DbSet<Serie> Series { get; set; }
         public DbSet<Viewer> Viewers { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
 
         public ApplicationDbContext()
             : base("BootFlixBC9DBContext", throwIfV1Schema: false)
