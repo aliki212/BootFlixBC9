@@ -185,6 +185,7 @@
     <Compile Include="Controllers\API\ContractsController.cs" />
     <Compile Include="Controllers\API\SeriesController.cs" />
     <Compile Include="Controllers\API\ViewersController.cs" />
+    <Compile Include="Controllers\ContractController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SerieController.cs" />
@@ -580,6 +581,7 @@
     <Content Include="Views\Viewer\ViewerForm.cshtml" />
     <Content Include="Views\Serie\SerieForm.cshtml" />
     <Content Include="Views\Serie\SeriesListReadOnly.cshtml" />
+    <Content Include="Views\Contract\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
