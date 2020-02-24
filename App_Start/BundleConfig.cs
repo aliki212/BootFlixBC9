@@ -31,9 +31,10 @@ namespace BootFlixBC9
             //            "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                    //  "~/Content/bootstrap.css",
                       "~/Content/bootstrap-cyborg.css",
                        "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/typeahead.css",
                       "~/Content/site.css"));
         }
     }
