@@ -247,6 +247,10 @@
     <Compile Include="Migrations\202002211851207_AddedPassportInApplicationUser.Designer.cs">
       <DependentUpon>202002211851207_AddedPassportInApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002241641576_ActorContract.cs" />
+    <Compile Include="Migrations\202002241641576_ActorContract.Designer.cs">
+      <DependentUpon>202002241641576_ActorContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MockRepositories\MockSerieRepository.cs" />
     <Compile Include="MockRepositories\MockViewerRepository.cs" />
@@ -629,6 +633,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002211851207_AddedPassportInApplicationUser.resx">
       <DependentUpon>202002211851207_AddedPassportInApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002241641576_ActorContract.resx">
+      <DependentUpon>202002241641576_ActorContract.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
