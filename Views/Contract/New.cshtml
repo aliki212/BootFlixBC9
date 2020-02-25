@@ -18,20 +18,24 @@
 @section script{
     <script>
         $(document).ready(function () {
-                        var bestPictures = new Bloodhound({
-              datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                        var actors = new Bloodhound({
+              datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
               queryTokenizer: Bloodhound.tokenizers.whitespace,
-              prefetch: '../data/films/post_1960.json',
+              //prefetch: '../data/films/post_1960.json',
               remote: {
-                url: '../data/films/queries/%QUERY.json',
+                url: '/api/actors?query=%QUERY'//'../data/films/queries/%QUERY.json',
                 wildcard: '%QUERY'
               }
             });
 
-            $('#remote .typeahead').typeahead(null, {
-              name: 'best-pictures',
-              display: 'value',
-              source: bestPictures
+            $('#actor').typeahead({
+                minLength: 3,
+                hightlight: true
+            },//instead of null we create an anonymous object
+                {
+              name: 'actors',
+              display: 'name',
+              source: actors
             });
                     });
     </script>
