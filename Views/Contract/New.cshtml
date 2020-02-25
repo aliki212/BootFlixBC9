@@ -3,15 +3,16 @@
     ViewBag.Title = "New Contract";
 }
 <h2>New Contract</h2>
-<form>
-    <div class="form-group">
+<form id="newContract">
+    <div class="form-group" >
         <label>Actor</label>
         <input id="actor" name="actor" type="text" value="" class="form-control" />
     </div>
     <div class="form-group">
         <label>Serie</label>
         <input id="serie" name="serie" type="text" value="" class="form-control" />
-    </div>    <button class="btn btn-primary">Submit Contract</button>
+    </div>    
+    <button class="btn btn-primary">Submit Contract</button>
     <div class="row">
         <div class="col-md-4 col-sm-4">
             <ul id="series" class="list-group"></ul>
@@ -55,7 +56,7 @@
                     wildcard: '%QUERY'
                 }
             });
-              $('#series').typeahead({
+              $('#serie').typeahead({
                 minLength: 3,
                 highlight: true
             },
@@ -67,7 +68,24 @@
                       $("#series").append("<li class='list-group-item'>" + serie.name + "</li>");
                       $("#serie").typeahead("val", "");
                     viewModel.seriesIds.push(serie.id);
+                  });
+
+            //submit form
+            $("#newContract").submit(function () {
+                e.preventDefault();//instead of working like a regular form be an ajax form:
+
+                $.ajax({
+                    url: "/api/contracts",
+                    method: "POST",
+                    data: viewModel
+                })
+                    .done(function () {
+                        console.log("Bravo mou");
+                    })
+                    .fail(function () {
+                        console.log("Failure is not a virtue!");
                     });
+            });
         });
 
     </script>

@@ -24,13 +24,26 @@ namespace BootFlixBC9.Controllers.API
 
 
         //GET /api/series
-
-        public IEnumerable<SerieDto> GetSeries()
+        //first initial version b4 the actors new contract call
+        //public IEnumerable<SerieDto> GetSeries()
+        //{
+        //    return context.Series
+        //        .Include(s => s.Genre)
+        //        .ToList()
+        //        .Select(Mapper.Map<Serie, SerieDto>);
+        //}
+        public IHttpActionResult GetSeries(string query = null)
         {
-            return context.Series
-                .Include(s => s.Genre)
+            var seriesQuery = context.Series.AsQueryable();
+            // .Where(s => s.IsReleased == true);
+            if (!String.IsNullOrWhiteSpace(query))
+                seriesQuery = seriesQuery.Where(s => s.Name.Contains(query));
+
+            var series = seriesQuery
                 .ToList()
                 .Select(Mapper.Map<Serie, SerieDto>);
+
+            return Ok(series);
         }
 
         // GET /api/series/id
