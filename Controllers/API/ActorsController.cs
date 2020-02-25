@@ -19,12 +19,29 @@ namespace BootFlixBC9.Controllers.API
         }
         // GET /api/actors
 
-        public IEnumerable<ActorDto> GetActors()
+        public IHttpActionResult GetActors(string query = null)
         {
-            return context.Actors
-                .ToList()
-                .Select(Mapper.Map<Actor, ActorDto>);
-        }
+            var actorsQuery = context.Actors.AsQueryable(); //here we solved the below problem
+            //var actorsQuery = context.Actors; //// just this line makes it a DbSet Object and below at IsNullOrWhiteSpace returns an Iqueriable which is caused by the .Where in LinQ 
+            //// if we want to make the DbSet object to an equivalent to IQueriable - we use a query as well with Where which makes the var an IEnumerable which an be the same with an IQueriable
+            ////.Where(a=>a.Age>10)
+            //.ToList();
+            //.Select(Mapper.Map<Actor, ActorDto>);
 
+            if (!string.IsNullOrWhiteSpace(query))
+                actorsQuery = actorsQuery.Where(a => a.Name.Contains(query));
+
+            var actors = actorsQuery.ToList()
+                .Select(Mapper.Map<Actor, ActorDto>);
+
+            return Ok(actors);
+        }
+        ////The initial GetActors api with no query - we returned the query for bringing only 1 result
+        //public IEnumerable<ActorDto> GetActors()
+        //{
+        //    return context.Actors
+        //        .ToList()
+        //        .Select(Mapper.Map<Actor, ActorDto>);
+        //}
     }
 }
