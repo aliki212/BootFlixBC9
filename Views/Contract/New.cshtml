@@ -7,12 +7,16 @@
     <div class="form-group">
         <label>Actor</label>
         <input id="actor" name="actor" type="text" value="" class="form-control" />
-    </div>    
+    </div>
     <div class="form-group">
         <label>Serie</label>
         <input id="serie" name="serie" type="text" value="" class="form-control" />
     </div>    <button class="btn btn-primary">Submit Contract</button>
-
+    <div class="row">
+        <div class="col-md-4 col-sm-4">
+            <ul id="series" class="list-group"></ul>
+        </div>
+    </div>
 </form>
 @section Scripts
 {
@@ -41,7 +45,31 @@
                     viewModel.actorId = actor.id;
                     console.log(actor.id);
                 });
+
+            //series
+             var series = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/series?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+              $('#series').typeahead({
+                minLength: 3,
+                highlight: true
+            },
+                {
+                    name: 'series',
+                    display: 'name',
+                    source: series
+                  }).on("typeahaead:select", function (e, serie) {
+                      $("#series").append("<li class='list-group-item'>" + serie.name + "</li>");
+                      $("#serie").typeahead("val", "");
+                    viewModel.seriesIds.push(serie.id);
+                    });
         });
+
     </script>
 }
 
