@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\ActorsController.cs" />
     <Compile Include="Controllers\API\ContractsController.cs" />
     <Compile Include="Controllers\API\SeriesController.cs" />
     <Compile Include="Controllers\API\ViewersController.cs" />

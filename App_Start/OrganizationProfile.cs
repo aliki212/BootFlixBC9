@@ -19,6 +19,8 @@ namespace BootFlixBC9.App_Start
             CreateMap<MembershipType, MembershipTypeDto>();
             //CreateMap<MembershipTypeDto, MembershipType>();
             CreateMap<Genre, GenreDto>();
+            CreateMap<Actor, ActorDto>();
+            CreateMap<ActorDto, Actor>();
         }
     }
 }

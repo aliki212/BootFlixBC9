@@ -2,41 +2,37 @@
 @{
     ViewBag.Title = "New Contract";
 }
-
 <h2>New Contract</h2>
 <form>
     <div class="form-group">
-        <labal>Actor</labal>
+        <label>Actor</label>
         <input id="actor" name="actor" type="text" value="" class="form-control" />
-    </div>
-    <div class="form-group">
-        <labal>Serie</labal>
+    </div>    <div class="form-group">
+        <label>Serie</label>
         <input id="serie" name="serie" type="text" value="" class="form-control" />
-    </div>
-    <button class="btn btn-primary">Submit</button>
+    </div>    <button class="btn btn-primary">Submit Contract</button>
 </form>
-@section script{
+@section Scripts
+{
     <script>
         $(document).ready(function () {
-                        var actors = new Bloodhound({
-              datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-              queryTokenizer: Bloodhound.tokenizers.whitespace,
-              //prefetch: '../data/films/post_1960.json',
-              remote: {
-                url: '/api/actors?query=%QUERY'//'../data/films/queries/%QUERY.json',
-                wildcard: '%QUERY'
-              }
-            });
-
-            $('#actor').typeahead({
+            var actors = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/actors?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });            $('#actor').typeahead({
                 minLength: 3,
-                hightlight: true
-            },//instead of null we create an anonymous object
-                {
-              name: 'actors',
-              display: 'name',
-              source: actors
+                highlight: true
+            },
+            {
+                name: 'actors',
+                display: 'name',
+                source: actors
             });
-                    });
+        });
     </script>
-    }
+}
+
