@@ -80,7 +80,7 @@
             // validate form
              var validator =  $("#newContract").validate({
                 submitHandler: function () {
-                    // e.preventDefault(); //here is not the form (e) but the event
+                    // e.preventDefault(); //here is not the form (e) but the event > the validator stops it anyhow to submit
                 $.ajax({
                     url: "/api/contracts",
                     method: "POST",
@@ -91,7 +91,7 @@
                         //on success empty out the typeahead values and the viewModel.serieIds to enter the next contract to be submited
                         $("#actor").typeahead("val", "");
                         $("#serie").typeahead("val", "");
-                        $("#series").typeahead("val", "");
+                        $("#series").empty();
 
                         viewModel = { serieIds: [] }; 
                         validator.resetForm(); //AND the actual form
