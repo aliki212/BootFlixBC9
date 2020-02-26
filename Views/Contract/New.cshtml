@@ -11,13 +11,12 @@
     <div class="form-group">
         <label>Serie</label>
         <input id="serie" name="serie" type="text" value="" class="form-control" />
-    </div>    
-    <button class="btn btn-primary">Submit Contract</button>
-    <div class="row">
+    </div>    <div class="row">
         <div class="col-md-4 col-sm-4">
-            <ul id="series" class="list-group"></ul>
+            <ul id="series" class="list-group">            </ul>
         </div>
     </div>
+    <button class="btn btn-primary">Submit Contract</button>
 </form>
 @section Scripts
 {
@@ -42,21 +41,18 @@
                     name: 'actors',
                     display: 'name',
                     source: actors
-                }).on("typeahaead:select", function (e, actor) {
+                }).on("typeahead:select", function (e, actor) {
                     viewModel.actorId = actor.id;
                     console.log(actor.id);
+                }); var series = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/api/series?query=%QUERY',
+                        wildcard: '%QUERY'
+                    }
                 });
-
-            //series
-             var series = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: '/api/series?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
-              $('#serie').typeahead({
+            $('#serie').typeahead({
                 minLength: 3,
                 highlight: true
             },
@@ -64,30 +60,29 @@
                     name: 'series',
                     display: 'name',
                     source: series
-                  }).on("typeahaead:select", function (e, serie) {
-                      $("#series").append("<li class='list-group-item'>" + serie.name + "</li>");
-                      $("#serie").typeahead("val", "");
-                    viewModel.seriesIds.push(serie.id);
-                  });
-
+                }).on("typeahead:select", function (e, serie) {
+                    $("#series").append("<li class='list-group-item'>" + serie.name + "</li>");
+                    $("#serie").typeahead("val", "");
+                    viewModel.serieIds.push(serie.id);
+                });
             //submit form
-            $("#newContract").submit(function () {
-                e.preventDefault();//instead of working like a regular form be an ajax form:
-
+            $("#newContract").submit(function (e) {
+                e.preventDefault(); //instead of working like a regular form be an 
                 $.ajax({
                     url: "/api/contracts",
                     method: "POST",
                     data: viewModel
                 })
                     .done(function () {
-                        console.log("Bravo mou");
+                        toastr.success("A new contract has been deployed");
+                        console.log("Sucess");
                     })
                     .fail(function () {
-                        console.log("Failure is not a virtue!");
+                        toastr.fail("Something went wrong");
+                        console.log("Failed");
                     });
             });
         });
-
     </script>
 }
 
