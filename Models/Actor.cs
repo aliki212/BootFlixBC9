@@ -19,5 +19,12 @@ namespace BootFlixBC9.Models
         public string Nationality { get; set; }
 
         //public bool IsRegistered { get; set; }
+
+        public Actor(string name, int age, string nationality)
+        {
+            Name = name;
+            Age = age;
+            Nationality = nationality;
+        }
     }
 }

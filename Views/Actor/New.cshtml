@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "New Actor";
+}
+
+<h2>New Actor</h2>
+
+<form id="newActor">
+    <div class="form-group">
+        <label>Actor</label>
+        <input id="actor" name="actor" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <input id="age" name="age" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Nationality</label>
+        <select id="nationality-dropdown" class="form-control"></select>
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+
+</form>
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        let dropdownNations = $('#nationality-dropdown');
+        dropdownNations.empty();
+
+        dropdownNations.append('<option selected="true" disabled>Choose Nation</option>'); //disabled => to ChooseNation na min einai Nationality
+        dropdownNations.prop('selectedIndex', 0);
+
+        const url = 'https://restcountries.eu/rest/v2/all';
+
+        // Populate Dropdown
+        $.getJSON(url, function (data) {
+            $.each(data, function (key, entry) {
+                dropdownNations.append($('<option></option>').attr('value', entry.name).text(entry.name));
+
+            });
+        });//end of getJSON
+
+        let viewModel = {};
+        $("#newActor").submit(function (e) {
+            e.preventDefault();
+            viewModel.name = $('#actor').val();
+            viewModel.age = $('#age').val();
+            viewModel.nationality = $('#nationality-dropdown').val();
+            console.log(viewModel.nationality);
+
+            $.ajax({
+                url: "/api/actors",
+                method: "post",
+                data: viewModel
+            }) 
+                .done(function () {
+                toastr.success("It Worked!")})
+                .fail(function () {
+                toastr.fail("Try again!")
+                }); //end of ajax - fail
+        });//end of #newactor
+
+    }); //last document ready closing
+    </script>    
+}

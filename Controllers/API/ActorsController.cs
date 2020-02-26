@@ -43,5 +43,21 @@ namespace BootFlixBC9.Controllers.API
         //        .ToList()
         //        .Select(Mapper.Map<Actor, ActorDto>);
         //}
+
+        [HttpPost]
+        public IHttpActionResult CreateActor(ActorDto actorDto)
+        {
+            //actorDto.Age = (int)actorDto.Age;
+            if (!ModelState.IsValid)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            //var actor = Mapper.Map<ActorDto, Actor>(actorDto);
+
+            var actor = new Actor(actorDto.Name, actorDto.Age, actorDto.Nationality);
+            context.Actors.Add(actor);
+            context.SaveChanges();
+
+            return Ok();
+        }
+
     }
 }

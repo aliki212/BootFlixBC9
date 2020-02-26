@@ -19,5 +19,7 @@ namespace BootFlixBC9.DTOs
         public string Nationality { get; set; }
 
         //public bool IsRegistered { get; set; }
+
+     
     }
 }
