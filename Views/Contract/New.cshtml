@@ -6,11 +6,11 @@
 <form id="newContract">
     <div class="form-group" >
         <label>Actor</label>
-        <input id="actor" name="actor" type="text" value="" class="form-control" />
+        <input id="actor" name="actor" required data-rule-validActor="true" type="text" value="" class="form-control" />
     </div>
     <div class="form-group">
         <label>Serie</label>
-        <input id="serie" name="serie" type="text" value="" class="form-control" />
+        <input id="serie" name="serie" data-rule-validSerie="true" type="text" value="" class="form-control" />
     </div>    <div class="row">
         <div class="col-md-4 col-sm-4">
             <ul id="series" class="list-group">            </ul>
@@ -20,6 +20,7 @@
 </form>
 @section Scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
             let viewModel = {
@@ -65,9 +66,21 @@
                     $("#serie").typeahead("val", "");
                     viewModel.serieIds.push(serie.id);
                 });
-            //submit form
-            $("#newContract").submit(function (e) {
-                e.preventDefault(); //instead of working like a regular form be an 
+
+            // custom validation
+            $.validator.addMethod("validActor", function () {
+                return viewModel.actorId && viewModel.actorId !== 0; // two equals mean to test the value and the type
+            }, "Please add a registered actor.");
+
+            // AtLeastOneSERIE
+             $.validator.addMethod("validSerie", function () {
+                return  viewModel.serieIds && viewModel.serieIds.length > 0; 
+            }, "Please add at least one serie.");
+
+            // validate form
+             var validator =  $("#newContract").validate({
+                submitHandler: function () {
+                    // e.preventDefault(); //here is not the form (e) but the event
                 $.ajax({
                     url: "/api/contracts",
                     method: "POST",
@@ -75,13 +88,40 @@
                 })
                     .done(function () {
                         toastr.success("A new contract has been deployed");
+                        //on success empty out the typeahead values and the viewModel.serieIds to enter the next contract to be submited
+                        $("#actor").typeahead("val", "");
+                        $("#serie").typeahead("val", "");
+                        $("#series").typeahead("val", "");
+
+                        viewModel = { serieIds: [] }; 
+                        validator.resetForm(); //AND the actual form
                         console.log("Sucess");
                     })
                     .fail(function () {
                         toastr.fail("Something went wrong");
                         console.log("Failed");
                     });
+                    return false;
+                }
             });
+
+            ////submit form
+            //$("#newContract").submit(function (e) {
+            //    e.preventDefault(); //instead of working like a regular form be an 
+            //    $.ajax({
+            //        url: "/api/contracts",
+            //        method: "POST",
+            //        data: viewModel
+            //    })
+            //        .done(function () {
+            //            toastr.success("A new contract has been deployed");
+            //            console.log("Sucess");
+            //        })
+            //        .fail(function () {
+            //            toastr.fail("Something went wrong");
+            //            console.log("Failed");
+            //        });
+            //});
         });
     </script>
 }
