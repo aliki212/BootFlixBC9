@@ -55,9 +55,10 @@
                 data: viewModel
             }) 
                 .done(function () {
-                toastr.success("It Worked!")})
+                    toastr.success("It Worked!");
+                })
                 .fail(function () {
-                toastr.fail("Try again!")
+                    toastr.fail("Try again!");
                 }); //end of ajax - fail
         });//end of #newactor
 
