@@ -11,7 +11,8 @@
     <div class="form-group">
         <label>Serie</label>
         <input id="serie" name="serie" data-rule-validSerie="true" type="text" value="" class="form-control" />
-    </div>    <div class="row">
+    </div>    
+    <div class="row">
         <div class="col-md-4 col-sm-4">
             <ul id="series" class="list-group">            </ul>
         </div>
@@ -26,6 +27,7 @@
             let viewModel = {
                 serieIds: []
             };
+            // actors
             var actors = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -34,6 +36,7 @@
                     wildcard: '%QUERY'
                 }
             });
+
             $('#actor').typeahead({
                 minLength: 3,
                 highlight: true
@@ -45,14 +48,18 @@
                 }).on("typeahead:select", function (e, actor) {
                     viewModel.actorId = actor.id;
                     console.log(actor.id);
-                }); var series = new Bloodhound({
-                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-                    queryTokenizer: Bloodhound.tokenizers.whitespace,
-                    remote: {
-                        url: '/api/series?query=%QUERY',
-                        wildcard: '%QUERY'
-                    }
                 });
+
+            // series
+            var series = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/series?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
             $('#serie').typeahead({
                 minLength: 3,
                 highlight: true
@@ -65,45 +72,56 @@
                     $("#series").append("<li class='list-group-item'>" + serie.name + "</li>");
                     $("#serie").typeahead("val", "");
                     viewModel.serieIds.push(serie.id);
+                    console.log(viewModel.serieIds);
                 });
 
             // custom validation
             $.validator.addMethod("validActor", function () {
+                console.log(viewModel.actorId);
                 return viewModel.actorId && viewModel.actorId !== 0; // two equals mean to test the value and the type
             }, "Please add a registered actor.");
 
-            // AtLeastOneSERIE
-             $.validator.addMethod("validSerie", function () {
-                return  viewModel.serieIds && viewModel.serieIds.length > 0; 
-            }, "Please add at least one serie.");
+            // AtLeastOneSerie
+            $.validator.addMethod("atLeastOneSerie", function () {
+                return viewModel.serieIds.length > 0;
+            }, "Please select at least one serie");
 
             // validate form
-             var validator =  $("#newContract").validate({
+            var validator = $("#newContract").validate({
                 submitHandler: function () {
-                    // e.preventDefault(); //here is not the form (e) but the event > the validator stops it anyhow to submit
-                $.ajax({
-                    url: "/api/contracts",
-                    method: "POST",
-                    data: viewModel
-                })
-                    .done(function () {
-                        toastr.success("A new contract has been deployed");
-                        //on success empty out the typeahead values and the viewModel.serieIds to enter the next contract to be submited
-                        $("#actor").typeahead("val", "");
-                        $("#serie").typeahead("val", "");
-                        $("#series").empty();
+                                        // e.preventDefault(); //here is not the form (e) but the event > the validator stops it anyhow to submit
 
-                        viewModel = { serieIds: [] }; 
-                        validator.resetForm(); //AND the actual form
-                        console.log("Sucess");
+
+                    $.ajax({
+                        url: "/api/contracts",
+                        method: "post",
+                        data: viewModel
                     })
-                    .fail(function () {
-                        toastr.fail("Something went wrong");
-                        console.log("Failed");
-                    });
+                        .done(function () {
+                            toastr.success("A new contract has been signed!");
+                                                    //on success empty out the typeahead values and the viewModel.serieIds to enter the next contract to be submited
+
+                            $("#actor").typeahead("val", "");
+                            $("#serie").typeahead("val", "");
+                            $("#series").empty();
+
+                            viewModel = { serieIds: [] };
+                            validator.resetForm(); //AND the actual form
+                            console.log("Bravo mou");
+                        })
+                        .fail(function () {
+                            toastr.error("Something wrong happened!");
+                            console.log("Bravo Malaka");
+                        });
                     return false;
                 }
             });
+
+            // submit form
+            //$("#newContract").submit(function (e) {
+
+            //});
+       
 
             ////submit form
             //$("#newContract").submit(function (e) {

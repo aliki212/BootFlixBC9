@@ -34,7 +34,9 @@ namespace BootFlixBC9.Controllers.API
         //}
         public IHttpActionResult GetSeries(string query = null)
         {
-            var seriesQuery = context.Series.AsQueryable();
+            var seriesQuery = context.Series
+                .Include(s => s.Genre)
+                .AsQueryable();
             // .Where(s => s.IsReleased == true);
             if (!String.IsNullOrWhiteSpace(query))
                 seriesQuery = seriesQuery.Where(s => s.Name.Contains(query));

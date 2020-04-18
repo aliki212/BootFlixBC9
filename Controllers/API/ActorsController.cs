@@ -13,12 +13,13 @@ namespace BootFlixBC9.Controllers.API
     public class ActorsController : ApiController
     {
         private ApplicationDbContext context;
+
         public ActorsController()
         {
             context = new ApplicationDbContext();
         }
-        // GET /api/actors
 
+        // GET /api/actors
         public IHttpActionResult GetActors(string query = null)
         {
             var actorsQuery = context.Actors.AsQueryable(); //here we solved the below problem
@@ -28,7 +29,7 @@ namespace BootFlixBC9.Controllers.API
             //.ToList();
             //.Select(Mapper.Map<Actor, ActorDto>);
 
-            if (!string.IsNullOrWhiteSpace(query))
+            if (!String.IsNullOrWhiteSpace(query))
                 actorsQuery = actorsQuery.Where(a => a.Name.Contains(query));
 
             var actors = actorsQuery.ToList()

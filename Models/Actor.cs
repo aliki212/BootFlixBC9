@@ -26,5 +26,9 @@ namespace BootFlixBC9.Models
             Age = age;
             Nationality = nationality;
         }
+        public Actor()
+        {
+
+        }
     }
 }

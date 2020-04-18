@@ -8,7 +8,7 @@ namespace BootFlixBC9.DTOs
 {
     public class ActorDto
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
         [StringLength(255)]
